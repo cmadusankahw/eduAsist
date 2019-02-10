@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="55c5ab67-9f40-4649-bfee-095f3a15d498">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="std_id" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="c_id" class="java.lang.String" isForPrompting="false"/>
+	<queryString>
+		<![CDATA[SELECT
+      student_info.`std_name` AS student_info_std_name,
+     std_attendnce.`c_id` AS std_attendnce_c_id,
+     std_attendnce.`a_daysattended` AS std_attendnce_a_daysattended,
+     std_attendnce.`a_daysremain` AS std_attendnce_a_daysremain,
+     std_attendnce.`a_status` AS std_attendnce_a_status
+   
+FROM
+     `std_attendnce` std_attendnce INNER JOIN 
+     `student_info` student_info ON std_attendnce.std_id=student_info.std_id
+
+WHERE
+std_attendnce.std_id=$P{std_id}  AND std_attendnce.c_id=$P{c_id}]]>
+	</queryString>
+	<field name="student_info_std_name" class="java.lang.String"/>
+	<field name="std_attendnce_c_id" class="java.lang.String"/>
+	<field name="std_attendnce_a_daysattended" class="java.lang.Integer"/>
+	<field name="std_attendnce_a_daysremain" class="java.lang.Integer"/>
+	<field name="std_attendnce_a_status" class="java.lang.String"/>
+	<group name="student_info_std_name">
+		<groupExpression><![CDATA[$F{student_info_std_name}]]></groupExpression>
+		<groupHeader>
+			<band height="33">
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="0" width="100" height="32" forecolor="#666666" backcolor="#E6E6E6" uuid="ab83c5e6-354d-43f8-9f3a-2e8f5c24aca3"/>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[student_info_std_name]]></text>
+				</staticText>
+				<textField>
+					<reportElement mode="Opaque" x="100" y="0" width="455" height="32" forecolor="#006699" backcolor="#E6E6E6" uuid="93df09ec-a32f-4682-aae3-87ffbe838bc9"/>
+					<textElement>
+						<font size="24" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{student_info_std_name}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="-20" y="32" width="595" height="1" forecolor="#666666" uuid="4e9b9676-3887-46b4-9926-6fe2e6a7cb84"/>
+				</line>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#009966" uuid="a7044423-6d52-46af-9d10-e2abc068f1c4"/>
+				<staticText>
+					<reportElement x="20" y="20" width="347" height="43" forecolor="#FFFFFF" uuid="de8430c3-8a47-4094-99d1-0a1184200452"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Student Attendence]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="395" y="43" width="180" height="20" forecolor="#FFFFFF" uuid="e23f6f88-050d-4bd2-ae9c-6d8287ff2df5"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Sipyana Institue - Matara]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="63a636f3-c7e8-4e8c-b2ab-e80749a5e3fa"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="138" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="2a4ab3cb-5830-470c-bfed-797884125377"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Course ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="138" y="0" width="138" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="054faf0e-23b6-4670-823d-8fcbc7bbe48e"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Days Attended]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="276" y="0" width="138" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="beddc1cc-15e9-45ad-96d6-bb6de44ca62e"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Days Remaining]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="414" y="0" width="138" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="89e1e2f6-8ac9-41f1-adee-2e7f42731ec9"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Payments (Last Month)]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="01516259-a1bf-4a5b-acf6-ae717f545cd1"/>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="0" width="138" height="20" uuid="78bf7625-46c4-47fc-a5f2-afddbc03e019"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{std_attendnce_c_id}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="138" y="0" width="138" height="20" uuid="6353757a-87a8-44a5-b664-459c1d325532"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{std_attendnce_a_daysattended}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="276" y="0" width="138" height="20" uuid="dc89eaac-2594-4c97-8cce-4f478fb77dfa"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{std_attendnce_a_daysremain}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="414" y="0" width="138" height="20" uuid="4234d56f-d2d7-489e-bdf9-b0398f6b9277"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{std_attendnce_a_status}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="c872e9d5-dc32-4aa2-9b01-587f26d849fb"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="d69551ea-aead-4cee-9b08-22c0c9fc8022"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="a5b36cee-67ab-4b19-a68e-07ec065d2cf6"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

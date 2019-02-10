@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3e47d198-3725-43b7-a80d-cf8d486571ec">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="pay_rec" class="java.lang.String" isForPrompting="false"/>
+	<queryString>
+		<![CDATA[SELECT
+     payment_info.`pay_rec` AS payment_info_pay_rec,
+     payment_info.`pay_type` AS payment_info_pay_type,
+     payment_info.`pay_amount` AS payment_info_pay_amount,
+     payment_info.`pay_month` AS payment_info_pay_month,
+     payment_info.`pay_date` AS payment_info_pay_date,
+     payment_info.`std_id` AS payment_info_std_id
+FROM
+     `payment_info` payment_info
+WHERE
+     pay_rec=$P{pay_rec}]]>
+	</queryString>
+	<field name="payment_info_pay_rec" class="java.lang.Integer"/>
+	<field name="payment_info_pay_type" class="java.lang.String"/>
+	<field name="payment_info_pay_amount" class="java.lang.Double"/>
+	<field name="payment_info_pay_month" class="java.lang.Integer"/>
+	<field name="payment_info_pay_date" class="java.sql.Date"/>
+	<field name="payment_info_std_id" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="171" y="14" width="229" height="52" uuid="3ca743f3-8129-49a0-a36f-0051543a4f47"/>
+				<textElement>
+					<font size="28" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Payment Reciept]]></text>
+			</staticText>
+			<line>
+				<reportElement x="-18" y="5" width="595" height="1" uuid="741c4196-9242-4c57-a4b3-3d4212d4626c"/>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="19" y="0" width="152" height="35" uuid="2c38fefe-b42e-450b-9fc6-e2cff46ccfa6"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Reciept No :-]]></text>
+			</staticText>
+			<textField>
+				<reportElement isPrintRepeatedValues="false" x="171" y="0" width="384" height="35" uuid="fdf09ac3-d3fc-47e8-9ad3-bfa3a1cb8470"/>
+				<textElement>
+					<font size="22" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{pay_rec}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="19" y="18" width="110" height="29" uuid="3459f5b7-c0f4-4a87-a2c1-da147b520b08"/>
+				<textElement>
+					<font size="18"/>
+				</textElement>
+				<text><![CDATA[Student ID :-]]></text>
+			</staticText>
+			<textField>
+				<reportElement isPrintRepeatedValues="false" x="143" y="18" width="412" height="29" uuid="70e49287-cc69-43d9-8a99-85719eb58f10"/>
+				<textElement>
+					<font size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{payment_info_std_id}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="192" splitType="Stretch">
+			<staticText>
+				<reportElement x="19" y="0" width="110" height="26" uuid="d9a8bb5e-aac7-4550-b8f5-d76c95c7bc16"/>
+				<textElement>
+					<font size="18"/>
+				</textElement>
+				<text><![CDATA[Fee Type   :-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="19" y="42" width="173" height="42" uuid="a3c4f67f-be8f-4249-8853-448a0d5a5ea3"/>
+				<textElement>
+					<font size="28" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Amount  Rs.]]></text>
+			</staticText>
+			<textField>
+				<reportElement isPrintRepeatedValues="false" x="192" y="39" width="363" height="45" uuid="c98bf90e-bb63-4b16-8e2d-46a1f46dcd6c"/>
+				<textElement>
+					<font size="30"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{payment_info_pay_amount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement isPrintRepeatedValues="false" x="143" y="0" width="412" height="26" uuid="73ec5722-0208-4c4a-9529-c313b286ed57"/>
+				<textElement>
+					<font size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{payment_info_pay_type}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="-29" y="83" width="606" height="1" uuid="4e9af593-5633-4056-b1a7-f24c60f5615a"/>
+			</line>
+			<textField>
+				<reportElement x="314" y="84" width="241" height="20" uuid="430065d5-ef6e-46c4-b4fc-641d8de74e37"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{payment_info_pay_date}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="314" y="103" width="241" height="20" uuid="b20eb0df-faf1-468d-b80e-e34528b8f8f5"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Sipyana High Educational Institute]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="314" y="123" width="241" height="20" uuid="73b8c625-6fe4-4f2a-9807-50f6a822f168"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Anagarika Darmapala Rd,Matara]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="314" y="143" width="241" height="20" uuid="e055b395-bc81-44b8-bf56-f71962493003"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[041 - 22 33 456 / 077- 12 34 566]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement x="-39" y="0" width="616" height="1" uuid="71537a86-a10b-4f92-8716-cbdb1c412c9c"/>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
